@@ -6,6 +6,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import UserTable from "@/components/UserTable";
 import { getUsers } from "@/utils/api";
 import { User } from "@/utils/users";
+import { ModeToggle } from "@/components/ModeToggle";
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
@@ -37,7 +38,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-      <div>
+      <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <motion.header
           initial={{ opacity: 0, y: -20 }}
@@ -45,6 +46,8 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className="flex flex-col sm:flex-row justify-between items-center mb-5 gap-4"
         >
+          <h1 className="text-xl md:text-2xl font-bold">User Management</h1>
+          <ModeToggle />
         </motion.header>
         {/* Users Table */}
         {loading ? (
