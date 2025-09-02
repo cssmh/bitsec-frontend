@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard App
 
-## Getting Started
+A **Next.js + TypeScript** dashboard application featuring a **User List** and **User Details Page**. Built with **shadcn/ui**, **Tailwind CSS**, **Framer Motion**, and **Three.js** for animations and optional 3D elements. Fully responsive for desktop and mobile devices.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **User List Page**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  - Fetches user data from [JSONPlaceholder](https://jsonplaceholder.typicode.com/users)
+  - Displays users in a responsive list
+  - Search users by name or email
+  - Pagination support
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **User Details Page**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  - Click on a user to view detailed information
+  - Navigate back to the User List
 
-## Learn More
+- **Animations & 3D**
 
-To learn more about Next.js, take a look at the following resources:
+  - Smooth UI animations with Framer Motion
+  - Optional 3D elements using Three.js
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Responsive Design**
+  - Works well on mobile, tablet, and desktop
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Next.js 13 (App Router)**
+- **TypeScript**
+- **Tailwind CSS**
+- **shadcn/ui** (Radix UI + Tailwind Components)
+- **Framer Motion** (UI animations)
+- **Three.js & @react-three/fiber** (3D elements)
+- **Axios** (API fetching)
