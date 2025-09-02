@@ -1,7 +1,30 @@
 export interface User {
+  id: number;
   name: string;
   username: string;
   email: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+    geo: {
+      lat: string;
+      lng: string;
+    };
+  };
   phone: string;
-  company: string;
+  website: string;
+  company: {
+    name: string;
+    catchPhrase: string;
+    bs: string;
+  };
+}
+
+export interface UsersResponse {
+  users: User[];
+  total: number;
+  skip: number;
+  limit: number;
 }
