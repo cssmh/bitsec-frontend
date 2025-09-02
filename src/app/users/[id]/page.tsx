@@ -27,7 +27,7 @@ export default async function UserDetails({ params }: UserParams) {
         &larr; Back to Users
       </Link>
 
-      <Card className="bg-white dark:bg-gray-800 shadow-lg">
+      <Card className="bg-white dark:bg-[#171717] shadow-lg">
         <CardHeader>
           <div className="flex items-center space-x-4">
             <Avatar className="bg-blue-800">
@@ -45,7 +45,7 @@ export default async function UserDetails({ params }: UserParams) {
           </div>
         </CardHeader>
         <CardContent className="grid gap-4 sm:grid-cols-2 mt-4">
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg space-y-1">
+          <div className="bg-white dark:bg-[#171717] p-4 rounded-lg space-y-1">
             <h3 className="font-semibold text-lg">Contact</h3>
             <p>Email: {user.email}</p>
             <p>Phone: {user.phone}</p>
@@ -61,14 +61,14 @@ export default async function UserDetails({ params }: UserParams) {
             </p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg space-y-1">
+          <div className="bg-white dark:bg-[#171717] p-4 rounded-lg space-y-1">
             <h3 className="font-semibold text-lg">Company</h3>
             <p>Name: {user.company.name}</p>
             <p>Catch Phrase: {user.company.catchPhrase}</p>
             <p>Business: {user.company.bs}</p>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-lg sm:col-span-2 space-y-1">
+          <div className="bg-white dark:bg-[#171717] p-4 rounded-lg sm:col-span-2 space-y-1">
             <h3 className="font-semibold text-lg">Address</h3>
             <p>
               {user.address.suite}, {user.address.street}, {user.address.city},{" "}
