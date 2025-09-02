@@ -125,27 +125,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
-/* Add to globals.css */
-@layer components {
-  .gradient-border {
-    position: relative;
-    background: linear-gradient(white, white) padding-box,
-      linear-gradient(45deg, #3b82f6, #8b5cf6) border-box;
-    border: 2px solid transparent;
-  }
-
-  .dark .gradient-border {
-    background: linear-gradient(#171717, #171717) padding-box,
-      linear-gradient(45deg, #3b82f6, #8b5cf6) border-box;
-  }
-
-  .hover-lift {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-  }
-}

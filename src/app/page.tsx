@@ -1,10 +1,18 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import UserTable from "@/pages/UserTable";
 import { User } from "@/utils/users";
 import { getUsers } from "@/utils/api";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationLink,
+  PaginationEllipsis,
+} from "@/components/ui/pagination";
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
@@ -23,17 +31,28 @@ export default function Home() {
         console.error("Error fetching users:", error);
       }
     };
-
     const timer = setTimeout(fetchUsers, 500);
     return () => clearTimeout(timer);
   }, [currentPage, limit, searchTerm]);
 
   const totalPages = Math.ceil(totalUsers / limit);
 
+  const renderPageNumbers = () => {
+    return Array.from({ length: totalPages }).map((_, i) => (
+      <PaginationItem key={i}>
+        <PaginationLink
+          isActive={currentPage === i + 1}
+          onClick={() => setCurrentPage(i + 1)}
+        >
+          {i + 1}
+        </PaginationLink>
+      </PaginationItem>
+    ));
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-8">
-        {/* Users Table */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -47,36 +66,22 @@ export default function Home() {
             setLimit={setLimit}
           />
         </motion.div>
-        {/* Pagination */}
+
         {totalPages > 1 && (
-          <div className="mt-6 flex justify-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage((prev) => prev - 1)}
-            >
-              Prev
-            </Button>
-            {Array.from({ length: totalPages }).map((_, i) => (
-              <Button
-                key={i}
-                variant={currentPage === i + 1 ? "default" : "outline"}
-                size="sm"
-                onClick={() => setCurrentPage(i + 1)}
-              >
-                {i + 1}
-              </Button>
-            ))}
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={currentPage === totalPages}
-              onClick={() => setCurrentPage((prev) => prev + 1)}
-            >
-              Next
-            </Button>
-          </div>
+          <Pagination className="mt-6">
+            <PaginationPrevious
+              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+            />
+            <PaginationContent>
+              {renderPageNumbers()}
+              {totalPages > 5 && <PaginationEllipsis />}
+            </PaginationContent>
+            <PaginationNext
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+              }
+            />
+          </Pagination>
         )}
       </div>
     </div>

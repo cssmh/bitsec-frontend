@@ -11,13 +11,13 @@ export default async function UserDetails({ params }: UserParams) {
   const user = await getUser(params?.id);
 
   return (
-    <main className="p-6 max-w-5xl mx-auto space-y-6">
+    <div className="p-6 max-w-5xl mx-auto space-y-6">
       <h1 className="text-xl md:text-2xl font-bold">User Details</h1>
       <Link
         href="/"
         className="text-sm text-blue-400 hover:underline inline-block"
       >
-      Back to Users
+        Back to Users
       </Link>
 
       <Card className="bg-white dark:bg-[#171717] shadow-lg">
@@ -73,6 +73,6 @@ export default async function UserDetails({ params }: UserParams) {
           </div>
         </CardContent>
       </Card>
-    </main>
+    </div>
   );
 }

@@ -38,7 +38,7 @@ export default function UserTable({
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="bg-card p-6 rounded-sm shadow-sm mb-6"
+        className="bg-card p-6 rounded-md mb-6"
       >
         <div className="flex justify-between">
         <h1 className="text-xl md:text-2xl font-bold mb-5">Users</h1>
@@ -81,7 +81,7 @@ export default function UserTable({
             </p>
           </div>
         ) : (
-          <div className="rounded-sm border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
+          <div className="rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
             <Table>
               <TableHeader className="bg-gray-50 dark:bg-gray-700">
                 <TableRow>
