@@ -1,25 +1,18 @@
 import Link from "next/link";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { User } from "@/utils/users";
+import { getUser } from "@/lib/api";
 
 interface UserParams {
   params: { id: string };
 }
 
-async function getUser(id: string): Promise<User> {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) throw new Error("Failed to fetch user");
-  return res.json();
-}
-
 export default async function UserDetails({ params }: UserParams) {
-  const user = await getUser(params.id);
+  const user = await getUser(params?.id);
 
   return (
     <main className="p-6 max-w-5xl mx-auto space-y-6">
+      <h1 className="text-xl md:text-2xl font-bold">User Details</h1>
       <Link
         href="/"
         className="text-sm text-blue-400 hover:underline inline-block"

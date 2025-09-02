@@ -1,4 +1,6 @@
+// components/UserTable.tsx
 "use client";
+
 import { motion } from "framer-motion";
 import {
   Table,
@@ -9,7 +11,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { User } from "@/utils/users";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import {
@@ -19,6 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { User } from "@/utils/users";
 
 interface UserTableProps {
   users: User[];
