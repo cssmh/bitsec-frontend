@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Moon, Sun, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { User as UserType } from "@/utils/users";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getUsers } from "@/utils/api";
 import UserTable from "@/components/UserTable";
+import DarkModeProvider from "@/components/DarkModeProvider";
 
 export default function Home() {
   const [users, setUsers] = useState<UserType[]>([]);
@@ -16,25 +17,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalUsers, setTotalUsers] = useState(0);
-  const [darkMode, setDarkMode] = useState(false);
   const usersPerPage = 5;
-
-  useEffect(() => {
-    // Check system preference for dark mode
-    if (typeof window !== "undefined") {
-      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      setDarkMode(isDark);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Apply dark mode class to document
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -81,18 +64,7 @@ export default function Home() {
           </h1>
 
           <div className="flex items-center gap-4">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => setDarkMode(!darkMode)}
-              className="rounded-full"
-            >
-              {darkMode ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
+            <DarkModeProvider />
           </div>
         </motion.header>
 
@@ -101,7 +73,7 @@ export default function Home() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-6"
+          className="bg-white dark:bg-gray-800 p-6 mb-6"
         >
           <h2 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">
             Search by name or email
