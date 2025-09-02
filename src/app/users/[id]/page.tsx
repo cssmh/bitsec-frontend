@@ -17,7 +17,7 @@ export default async function UserDetails({ params }: UserParams) {
         href="/"
         className="text-sm text-blue-400 hover:underline inline-block"
       >
-        &larr; Back to Users
+      Back to Users
       </Link>
 
       <Card className="bg-white dark:bg-[#171717] shadow-lg">

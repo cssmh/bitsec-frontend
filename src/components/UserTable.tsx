@@ -20,15 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { User } from "@/utils/users";
-
-interface UserTableProps {
-  users: User[];
-  searchTerm: string;
-  setSearchTerm: (term: string) => void;
-  limit: number;
-  setLimit: (limit: number) => void;
-}
+import { UserTableProps } from "@/lib/api";
 
 export default function UserTable({
   users,
@@ -47,15 +39,15 @@ export default function UserTable({
         transition={{ duration: 0.5, delay: 0.1 }}
         className="bg-card p-6 rounded-lg shadow-md mb-6"
       >
-        <h2 className="text-lg font-semibold mb-4">Search Users</h2>
+        <h1 className="text-xl md:text-2xl font-bold mb-5">Users</h1>
         {/* Search + Limit */}
         <div className="flex justify-between items-center mb-5">
           <Input
             type="text"
-            placeholder="Search..."
+            placeholder="Search by name or email..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-64 text-sm"
+            className="w-80 text-sm"
           />
           <div className="flex items-center space-x-2">
             <span className="text-gray-500 dark:text-gray-400 text-sm">
@@ -72,6 +64,7 @@ export default function UserTable({
                 <SelectItem value="3">3</SelectItem>
                 <SelectItem value="5">5</SelectItem>
                 <SelectItem value="8">8</SelectItem>
+                <SelectItem value="10">10</SelectItem>
               </SelectContent>
             </Select>
           </div>

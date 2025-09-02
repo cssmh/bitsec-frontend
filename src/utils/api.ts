@@ -2,7 +2,7 @@ import { User } from "./users";
 
 export async function getUsers(
   page = 1,
-  limit = 5,
+  limit = 8,
   search = ""
 ): Promise<{ users: User[]; total: number }> {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");

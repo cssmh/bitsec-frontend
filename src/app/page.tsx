@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import UserTable from "@/components/UserTable";
-import { ModeToggle } from "@/components/ModeToggle";
 import { User } from "@/utils/users";
 import { getUsers } from "@/utils/api";
 
@@ -35,16 +34,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-8">
-        {/* Header */}
-        <motion.header
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col sm:flex-row justify-between items-center mb-5 gap-4"
-        >
-          <h1 className="text-xl md:text-2xl font-bold">User Management</h1>
-          <ModeToggle />
-        </motion.header>
 
         {/* Users Table */}
         <motion.div

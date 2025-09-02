@@ -27,6 +27,14 @@ export interface UsersResponse {
   total: number;
 }
 
+export interface UserTableProps {
+  users: User[];
+  searchTerm: string;
+  setSearchTerm: (term: string) => void;
+  limit: number;
+  setLimit: (limit: number) => void;
+}
+
 export async function getUsers(
   page: number = 1,
   limit: number = 5,
