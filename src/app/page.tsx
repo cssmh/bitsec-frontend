@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -34,7 +33,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-8">
-
         {/* Users Table */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -49,7 +47,6 @@ export default function Home() {
             setLimit={setLimit}
           />
         </motion.div>
-
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="mt-6 flex justify-center gap-2">

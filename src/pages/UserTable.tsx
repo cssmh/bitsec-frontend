@@ -21,6 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { UserTableProps } from "@/lib/api";
+import { ModeToggle } from "./ModeToggle";
 
 export default function UserTable({
   users,
@@ -37,9 +38,12 @@ export default function UserTable({
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="bg-card p-6 rounded-lg shadow-md mb-6"
+        className="bg-card p-6 rounded-sm shadow-sm mb-6"
       >
+        <div className="flex justify-between">
         <h1 className="text-xl md:text-2xl font-bold mb-5">Users</h1>
+          <ModeToggle />
+        </div>
         {/* Search + Limit */}
         <div className="flex justify-between items-center mb-5">
           <Input
@@ -77,7 +81,7 @@ export default function UserTable({
             </p>
           </div>
         ) : (
-          <div className="rounded-md border border-gray-200 dark:border-gray-700 overflow-hidden shadow-md">
+          <div className="rounded-sm border border-gray-200 dark:border-gray-700 overflow-hidden shadow-sm">
             <Table>
               <TableHeader className="bg-gray-50 dark:bg-gray-700">
                 <TableRow>
