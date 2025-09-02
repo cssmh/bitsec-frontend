@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import UserTable from "@/components/UserTable";
+import UserTable from "@/pages/UserTable";
 import { User } from "@/utils/users";
 import { getUsers } from "@/utils/api";
 
@@ -11,7 +11,7 @@ export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(8);
   const [totalUsers, setTotalUsers] = useState(0);
 
   useEffect(() => {
