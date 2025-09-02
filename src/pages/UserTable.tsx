@@ -41,7 +41,7 @@ export default function UserTable({
         className="bg-card p-6 rounded-md mb-6"
       >
         <div className="flex justify-between">
-        <h1 className="text-xl md:text-2xl font-bold mb-5">Users</h1>
+          <h1 className="text-xl md:text-2xl font-bold mb-5">Users</h1>
           <ModeToggle />
         </div>
         {/* Search + Limit */}
