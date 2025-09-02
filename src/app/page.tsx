@@ -1,8 +1,16 @@
+import Header from "@/components/Header";
+import SearchBar from "@/components/SearchBar";
+import UserTable from "@/components/UserTable";
+
 export default function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen p-8 bg-gray-100">
-      <div className="w-full max-w-5xl p-6 space-y-6 bg-white rounded-lg shadow-lg">
-      check
+    <div className="min-h-screen bg-gray-100 py-8">
+      <div className="container mx-auto px-4">
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <Header />
+          <SearchBar />
+          <UserTable />
+        </div>
       </div>
     </div>
   );
