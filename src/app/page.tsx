@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
@@ -24,7 +23,6 @@ export default function Home() {
       setLoading(true);
       try {
         const data = await getUsers(currentPage, usersPerPage, searchTerm);
-        console.log(data);
         setUsers(data.users);
         setTotalUsers(data.total);
       } catch (error) {
