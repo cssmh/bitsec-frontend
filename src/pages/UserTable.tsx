@@ -27,6 +27,7 @@ export default function UserTable({
   users,
   searchTerm,
   setSearchTerm,
+  loading,
   limit,
   setLimit,
 }: UserTableProps) {
@@ -74,7 +75,7 @@ export default function UserTable({
           </div>
         </div>
 
-        {users.length === 0 ? (
+        {!loading && users?.length === 0 ? (
           <div className="text-center py-12 bg-white dark:bg-[#171717] rounded-lg shadow-md">
             <p className="text-muted-foreground dark:text-gray-400">
               No users found.

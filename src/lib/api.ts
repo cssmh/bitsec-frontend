@@ -31,6 +31,7 @@ export interface UserTableProps {
   users: User[];
   searchTerm: string;
   setSearchTerm: (term: string) => void;
+  loading: boolean;
   limit: number;
   setLimit: (limit: number) => void;
 }

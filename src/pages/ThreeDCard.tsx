@@ -34,12 +34,7 @@ export function ThreeDCard({ children, intensity = 25 }: ThreeDCardProps) {
         ease: "power2.out",
       });
 
-      // Glow effect follows mouse
-      const glowX = (x / rect.width) * 100;
-      const glowY = (y / rect.height) * 100;
-
       gsap.to(glow, {
-        background: `radial-gradient(circle at ${glowX}% ${glowY}%, rgba(59, 130, 246, 0.4), transparent 70%)`,
         opacity: 0.8,
         duration: 0.5,
         ease: "power2.out",

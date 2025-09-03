@@ -19,16 +19,20 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [limit, setLimit] = useState(8);
+  const [loading, setLoading] = useState(false);
   const [totalUsers, setTotalUsers] = useState(0);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
+        setLoading(true);
         const data = await getUsers(currentPage, limit, searchTerm);
-        setUsers(data.users);
+        setUsers(data?.users);
         setTotalUsers(data.total);
       } catch (error) {
         console.error("Error fetching users:", error);
+      } finally {
+        setLoading(false);
       }
     };
     const timer = setTimeout(fetchUsers, 500);
@@ -63,6 +67,7 @@ export default function Home() {
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
             limit={limit}
+            loading={loading}
             setLimit={setLimit}
           />
         </motion.div>
