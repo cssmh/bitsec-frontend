@@ -1,16 +1,16 @@
+import Link from "next/link";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getUser } from "@/lib/api";
+import { getUser } from "@/utils/api";
 import ThreeBackground from "@/components/ThreeBackground";
 import { ThreeDCard } from "@/components/ThreeDCard";
-import Link from "next/link";
 
 interface UserParams {
   params: { id: string };
 }
 
 export default async function UserDetails({ params }: UserParams) {
-  const user = await getUser(params?.id);
+  const user = await getUser(Number(params?.id));
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
