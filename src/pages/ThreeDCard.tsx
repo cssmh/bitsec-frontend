@@ -1,16 +1,15 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
+import { motion } from "framer-motion";
 
 interface ThreeDCardProps {
   children: React.ReactNode;
   intensity?: number;
 }
 
-export function ThreeDCard({ children, intensity = 20 }: ThreeDCardProps) {
+export function ThreeDCard({ children, intensity = 25 }: ThreeDCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
   const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -18,20 +17,18 @@ export function ThreeDCard({ children, intensity = 20 }: ThreeDCardProps) {
     const glow = glowRef.current;
     if (!card || !glow) return;
 
+    const rect = card.getBoundingClientRect();
+
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
       const rotateX = -(y - rect.height / 2) / intensity;
       const rotateY = (x - rect.width / 2) / intensity;
-      const translateZ = 30;
 
-      // Card transformation
       gsap.to(card, {
         rotateX,
         rotateY,
-        translateZ,
         transformPerspective: 1000,
         duration: 0.8,
         ease: "power2.out",
@@ -50,15 +47,12 @@ export function ThreeDCard({ children, intensity = 20 }: ThreeDCardProps) {
     };
 
     const handleMouseLeave = () => {
-      setIsHovered(false);
-
       gsap
         .timeline()
         .to(card, {
           rotateX: 0,
           rotateY: 0,
-          translateZ: 0,
-          duration: 1.2,
+          duration: 1,
           ease: "elastic.out(1, 0.5)",
         })
         .to(
@@ -73,7 +67,6 @@ export function ThreeDCard({ children, intensity = 20 }: ThreeDCardProps) {
     };
 
     const handleMouseEnter = () => {
-      setIsHovered(true);
       gsap.to(glow, {
         opacity: 0.6,
         duration: 0.5,
@@ -85,27 +78,6 @@ export function ThreeDCard({ children, intensity = 20 }: ThreeDCardProps) {
     card.addEventListener("mouseleave", handleMouseLeave);
     card.addEventListener("mouseenter", handleMouseEnter);
 
-    // Initial entrance animation
-    gsap.fromTo(
-      card,
-      {
-        rotationY: -10,
-        rotationX: 5,
-        opacity: 0,
-        scale: 0.9,
-        transformPerspective: 1000,
-      },
-      {
-        rotationY: 0,
-        rotationX: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1.5,
-        ease: "elastic.out(1, 0.7)",
-        delay: 0.3,
-      }
-    );
-
     return () => {
       card.removeEventListener("mousemove", handleMouseMove);
       card.removeEventListener("mouseleave", handleMouseLeave);
@@ -115,8 +87,8 @@ export function ThreeDCard({ children, intensity = 20 }: ThreeDCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 50, rotateX: 10 }}
+      animate={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="relative w-full"
     >
@@ -129,21 +101,13 @@ export function ThreeDCard({ children, intensity = 20 }: ThreeDCardProps) {
       {/* Main card with 3D effect */}
       <div
         ref={cardRef}
-        className="relative z-10 transform-gpu transition-all duration-500 will-change-transform"
+        className="relative z-10 transform-gpu will-change-transform"
         style={{
           transformStyle: "preserve-3d",
           transform: "translateZ(0)",
         }}
       >
         {children}
-
-        {/* Subtle edge lighting */}
-        {isHovered && (
-          <>
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent opacity-60" />
-            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-60" />
-          </>
-        )}
       </div>
     </motion.div>
   );
