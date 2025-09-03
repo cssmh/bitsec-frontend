@@ -60,9 +60,10 @@ export async function getUsers(
 }
 
 export async function getUser(id: number): Promise<User> {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
-    cache: "no-store",
-  });
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`) 
+  //   {
+  //   cache: "no-store",
+  // };
   if (!res.ok) throw new Error("Failed to fetch user");
   return res.json();
 }
