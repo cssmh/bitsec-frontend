@@ -5,13 +5,15 @@ import { getUser } from "@/utils/api";
 import ThreeBackground from "@/components/ThreeBackground";
 import { ThreeDCard } from "@/components/ThreeDCard";
 
-interface UserParams {
-  params: { id: string };
+interface UserDetailsProps {
+  params: Promise<{ id: string }>;
 }
 
-export default async function UserDetails({ params }: UserParams) {
-  const user = await getUser(Number(params?.id));
-
+export default async function UserDetails({ params }: UserDetailsProps) {
+  // Await the params promise first
+  const resolvedParams = await params;
+  const user = await getUser(resolvedParams.id);
+  
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
       <ThreeBackground />
