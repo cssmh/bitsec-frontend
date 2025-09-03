@@ -1,8 +1,8 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getUser } from "@/lib/api";
-import ThreeBackground from "@/pages/ThreeBackground";
-import { ThreeDCard } from "@/pages/ThreeDCard";
+import ThreeBackground from "@/components/ThreeBackground";
+import { ThreeDCard } from "@/components/ThreeDCard";
 import Link from "next/link";
 
 interface UserParams {

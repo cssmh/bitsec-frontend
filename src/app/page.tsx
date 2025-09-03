@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import UserTable from "@/pages/UserTable";
 import { User } from "@/utils/users";
 import { getUsers } from "@/utils/api";
 import {
@@ -13,6 +12,7 @@ import {
   PaginationLink,
   PaginationEllipsis,
 } from "@/components/ui/pagination";
+import UserTable from "@/components/UserTable";
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
