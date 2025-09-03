@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { getUsers } from "@/utils/api";
 import { User } from "@/utils/users";
 import {
   Pagination,
@@ -12,7 +13,6 @@ import {
   PaginationEllipsis,
 } from "@/components/ui/pagination";
 import UserTable from "@/components/UserTable";
-import { getUsers } from "@/utils/api";
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
@@ -36,6 +36,10 @@ export default function Home() {
   }, [currentPage, limit, searchTerm]);
 
   const totalPages = Math.ceil(totalUsers / limit);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
 
   const renderPageNumbers = () => {
     return Array.from({ length: totalPages }).map((_, i) => (
